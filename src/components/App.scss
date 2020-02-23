@@ -13,9 +13,23 @@ body {
     width: 60%;
     margin: auto;
 
+    .status {
+        display: block;
+        height: 30px;
+        margin: 0;
+    }
+
     .form-container {
         display: flex;
         flex-direction: column;
+        width: 600px;
+        align-items: center;
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 300px 300px;
+            grid-gap: 7px;
+        }
 
         .button {
             align-self: center;
@@ -24,12 +38,6 @@ body {
             margin-top: 10px;
             width: 70px;
         }
-    }
-
-    .options-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 7px;
     }
 
     .flag-container {

@@ -48,7 +48,7 @@ class App extends React.Component<{}, ICountryFlagState> {
 
 	private async getCountries(): Promise<ICountryFull[]> {
 		const allCountries = await fetch(this.api);
-		return await allCountries.json();
+		return allCountries.json();
 	}
 
 	private pickCountries(allCountries: any[]): ICountry[] {
@@ -103,8 +103,10 @@ class App extends React.Component<{}, ICountryFlagState> {
 
 	private getRandomIndexes(array: number[], range: number): number[] {
 		const index = this.getRandomIndex(range);
-		if (array.length < this.optionsNumber && !array.includes(index)) {
-			array = this.getRandomIndexes([...array, index], range);
+		if (array.length < this.optionsNumber) {
+			array = !array.includes(index)
+				? this.getRandomIndexes([...array, index], range)
+				: this.getRandomIndexes(array, range);
 		}
 		return array;
 	}
@@ -121,7 +123,7 @@ class App extends React.Component<{}, ICountryFlagState> {
 		return (
 			<div className="app">
 				<h1>Guess The Flag</h1>
-				<p>{message}</p>
+				<p className="status">{message}</p>
 				<form className="form-container" onSubmit={this.guessFlag}>
 					{<Options
 						pickedCountries={pickedCountries}
