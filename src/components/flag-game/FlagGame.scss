@@ -1,0 +1,5 @@
+.flag-game-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px minmax(300px, 500px);
+}
